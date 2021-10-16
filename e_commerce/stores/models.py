@@ -1,6 +1,6 @@
 from django.db import models
 
-from ..users.models import User
+from e_commerce.users.models import User
 
 
 class Category(models.Model):
