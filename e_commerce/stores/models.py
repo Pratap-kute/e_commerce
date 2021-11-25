@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from e_commerce.users.models import User
 
@@ -14,6 +15,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('stores:category_list', args=[self.slug])
 
 
 class Product(models.Model):
@@ -40,3 +44,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('stores:product_detail', args=[self.slug])
