@@ -4,6 +4,8 @@ from django.test import TestCase
 
 from e_commerce.stores.models import Category, Product
 
+# from e_commerce.users.models import User
+
 pytestmark = pytest.mark.django_db
 
 
@@ -25,9 +27,10 @@ class TestProductsModel(TestCase):
         get_user_model().objects.create_user(
             username="test", password="12test12", email="test@example.com"
         )
-        # User.objects.create(username='admin')
         Category.objects.create(name="django", slug="django")
-        id_dj = Category.objects.only("id").get(name="django").id
+        id_dj = (
+            Category.objects.filter(name="django").values_list("id", flat=True).last()
+        )
         self.data1 = Product.objects.create(
             category_id=id_dj,
             title="django beginners",
@@ -36,8 +39,6 @@ class TestProductsModel(TestCase):
             price="20.00",
             image="django",
         )
-        # self.data2 = Product.products.create(category_id=1, title='django advanced', created_by_id=1,
-        #                                      slug='django-advanced', price='20.00', image='django', is_active=False)
 
     def test_products_model_entry(self):
         """
