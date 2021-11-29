@@ -182,7 +182,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "e_commerce.utils.context_processors.settings_context",
-                "e_commerce.stores.views.categories",  # categories will be accesses by every view
+                "e_commerce.stores.context_processors.categories",  # categories will be accesses by every view
             ],
         },
     }
