@@ -3,7 +3,8 @@
 # from django.urls import reverse
 # from django.contrib.auth import get_user_model
 # from e_commerce.stores.models import Category, Product
-# from e_commerce.users.models import User
+#
+# # from e_commerce.users.models import User
 #
 # pytestmark = pytest.mark.django_db
 #
@@ -11,13 +12,19 @@
 # class TestViewResponses(TestCase):
 #     def setUp(self):
 #         self.c = Client()
-#         get_user_model().objects.create_superuser(
+#         get_user_model().objects.create_user(
 #             username="test", password="12test12", email="test@example.com"
 #         )
 #         Category.objects.create(name='django', slug='django')
 #         id_dj = Category.objects.filter(name='django').values_list('id', flat=True).last()
-#         Product.objects.create(category_id=id_dj, title='django beginners', created_by_id=1,
-#                                slug='django-beginners', price='20.00', image='django')
+#         self.data1 = Product.objects.create(
+#             category_id=id_dj,
+#             title="django beginners",
+#             created_by_id=1,
+#             slug="django-beginners",
+#             price="20.00",
+#             image="django",
+#         )
 #
 #     def test_url_allowed_hosts(self):
 #         """
